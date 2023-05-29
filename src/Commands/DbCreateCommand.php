@@ -12,7 +12,8 @@ class DbCreateCommand extends Command
     {
         $dbh = new PDO(
             "mysql:host=$context->get('host')",
-            $context->get('username'), $context->get('password')
+            $context->get('username'),
+            $context->get('password')
         );
         $dbh->exec("CREATE DATABASE $context->get('database')");
         return true;

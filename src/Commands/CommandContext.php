@@ -10,13 +10,15 @@ class CommandContext
     public function __construct(private array $params = [])
     {
     }
-    public function addParam(string $key, $val)
+    public function addParam(string $key, string $val)
     {
         $this->params[$key] = $val;
     }
     public function get(string $key): ?string
     {
-        if (key_exists($key, $this->params)) return $this->params[$key];
+        if (key_exists($key, $this->params)) {
+            return $this->params[$key];
+        }
         return null;
     }
     public function setError(string $error)

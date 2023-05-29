@@ -18,7 +18,6 @@ if (PHP_SAPI == 'cli') {
 } else {
     var_dump($_SERVER);
     var_dump($_REQUEST);
-    
     $method = $_SERVER['REQUEST_METHOD'];
     $request = $_REQUEST;
     echo match ($method) {
