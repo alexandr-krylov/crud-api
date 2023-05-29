@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: ./docker/php/
+      args:
+        - USER_ID
+        - GROUP_ID
+    working_dir: /var/www/crud-api
+    container_name: crud-api
+    volumes: 
+      - .:/var/www/crud-api
+    ports:
+      - 8000:8000
+  db:
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
