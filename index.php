@@ -14,7 +14,7 @@ var_dump(PHP_SAPI);
 if (PHP_SAPI == 'cli') {
     var_dump($_REQUEST);
     var_dump($argv);
-    CommandFactory::create($argv)->execute();
+    CommandFactory::create($argv[1])->execute();
 } else {
     var_dump($_SERVER);
     var_dump($_REQUEST);

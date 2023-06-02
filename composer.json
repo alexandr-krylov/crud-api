@@ -18,7 +18,7 @@
         "code-sniffer": [
             "./vendor/bin/phpcs --colors --standard=PSR12 ./src ./tests index.php"
         ],
-        "db:create": "@php index.php db:create"
+        "db:create": "@php index.php dbcreate"
     },
     "scripts-descriptions": {
         "test": "Run tests.",
