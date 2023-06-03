@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
+use CrudApi\Commands\CommandContext;
 use CrudApi\Controllers\{GetController, PostController, PutController, DeleteController};
 use CrudApi\Services\{GetService, PostService, PutService, DeleteService};
 use CrudApi\Commands\CommandFactory;
@@ -12,9 +13,8 @@ use CrudApi\Router;
 
 var_dump(PHP_SAPI);
 if (PHP_SAPI == 'cli') {
-    var_dump($_REQUEST);
-    var_dump($argv);
-    CommandFactory::create($argv[1])->execute();
+    $context = new CommandContext();
+    CommandFactory::create($argv[1])->execute($context);
 } else {
     var_dump($_SERVER);
     var_dump($_REQUEST);
