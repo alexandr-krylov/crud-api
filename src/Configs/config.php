@@ -4,7 +4,7 @@ return [
     'db' =>
     [
         'database' => 'crud-api',
-        'username' => 'user',
-        'password' => 'password'
+        'username' => 'root',
+        'password' => 'example'
     ],
 ];

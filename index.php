@@ -8,16 +8,11 @@ use CrudApi\Commands\CommandContext;
 use CrudApi\Controllers\{GetController, PostController, PutController, DeleteController};
 use CrudApi\Services\{GetService, PostService, PutService, DeleteService};
 use CrudApi\Commands\CommandFactory;
-use CrudApi\Router;
-// use CrudApi\Types\Request;
 
-var_dump(PHP_SAPI);
 if (PHP_SAPI == 'cli') {
     $context = new CommandContext();
     CommandFactory::create($argv[1])->execute($context);
 } else {
-    var_dump($_SERVER);
-    var_dump($_REQUEST);
     $method = $_SERVER['REQUEST_METHOD'];
     $request = $_REQUEST;
     echo match ($method) {
