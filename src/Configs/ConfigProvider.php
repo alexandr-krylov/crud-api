@@ -8,7 +8,7 @@ use CrudApi\Exceptions\ConfigException;
 
 class ConfigProvider
 {
-    private static ConfigProvider $instance = null;
+    private static ?ConfigProvider $instance = null;
     private array $config;
     private function __construct()
     {
