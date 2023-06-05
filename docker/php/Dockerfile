@@ -11,6 +11,6 @@ RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install zip pdo_mysql
 
 CMD ["php", "-S", "0.0.0.0:8000"]
