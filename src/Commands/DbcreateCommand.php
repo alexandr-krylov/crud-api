@@ -5,19 +5,22 @@ declare(strict_types=1);
 namespace CrudApi\Commands;
 
 use PDO;
+use CrudApi\Configs\ConfigProvider;
 
 class DbcreateCommand extends Command
 {
     public function execute(CommandContext $context): bool
     {
+        $configProvider = ConfigProvider::getInstance();
+        $config = $configProvider->get('db');
         $dbh = new PDO(
-            "mysql:host={$context->get('host')}",
-            $context->get('username'),
-            $context->get('password')
+            "mysql:host={$config['host']}",
+            $config['username'],
+            $config['password']
         );
-        $dbh->exec("DROP DATABASE IF EXISTS {$context->get('database')}");
-        $dbh->exec("CREATE DATABASE {$context->get('database')}");
-        $dbh->exec("USE {$context->get('database')}");
+        $dbh->exec("DROP DATABASE IF EXISTS {$config['database']}");
+        $dbh->exec("CREATE DATABASE {$config['database']}");
+        $dbh->exec("USE {$config['database']}");
         $dbh->exec("DROP TABLE IF EXISTS item");
         $dbh->exec(
             "CREATE TABLE IF NOT EXISTS item (" .
@@ -27,7 +30,8 @@ class DbcreateCommand extends Command
             "sequre_key VARCHAR(25), " .
             "created_at DATETIME DEFAULT CURRENT_TIMESTAMP, " .
             "updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP" .
-            ")");
+            ")"
+        );
         return true;
     }
 }
