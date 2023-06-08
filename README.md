@@ -8,6 +8,8 @@
 1. docker exec -it crud-api composer install
 1. docker exec -it crud-api composer db:create
 ## Using
+issue token docker exec -it crud-api composer issuetoken
+
 Send requests with postman
 ## Testing
 docker exec -it crud-api composer test

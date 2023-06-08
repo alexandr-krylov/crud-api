@@ -18,12 +18,14 @@
         "code-sniffer": [
             "./vendor/bin/phpcs --colors --standard=PSR12 ./src ./tests index.php"
         ],
-        "db:create": "@php index.php dbcreate"
+        "db:create": "@php index.php dbcreate",
+        "tokenissue": "@php index.php tokenissue"
     },
     "scripts-descriptions": {
         "test": "Run tests.",
         "code-sniffer": "Check code style for compliance with PSR12.",
-        "db:create": "Create the database and its tables."
+        "db:create": "Create the database and its tables.",
+        "tokenissue": "Issue JWT token"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.1",
